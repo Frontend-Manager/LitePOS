@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support | FZBillinG</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fc;
+            color: #333;
+        }
+
+        header {
+            background-color: #0066cc;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #0066cc;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 80%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1em;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            margin-left: 25px;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #0066cc;
+            box-shadow: 0 0 8px rgba(0, 102, 204, 0.3);
+            outline: none;
+        }
+
+        .contact-form button {
+            padding: 12px 20px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #005bb5;
+        }
+
+        .contact-info p {
+            font-size: 1.1em;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .contact-info a {
+            color: #0066cc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #004a8e;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            .container {
+                margin: 20px 15px;
+                padding: 15px;
+            }
+
+            .contact-form input, .contact-form textarea {
+                font-size: 1em;
+                padding: 10px;
+            }
+
+            .contact-form button {
+                font-size: 1.1em;
+                padding: 12px;
+            }
+
+            .contact-info p {
+                font-size: 1em;
+            }
+
+            footer {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.7em;
+            }
+
+            .container {
+                margin: 10px;
+                padding: 10px;
+            }
+
+            .contact-form input, .contact-form textarea {
+                font-size: 0.95em;
+            }
+
+            .contact-form button {
+                font-size: 1em;
+                padding: 10px;
+            }
+
+            footer {
+                font-size: 0.8em;
+                padding: 8px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Customer Support</h1>
+        <p>We're here to help you with anything you need!</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Contact Form Section -->
+        <div class="section contact-form">
+            
+            <form action="submit-form.php" method="POST">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                <textarea id="message" name="message" rows="6" placeholder="Your Message" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Contact Info Section -->
+        <div class="section contact-info">
+            <h2>Other Ways to Reach Us</h2>
+            <p>Email: <a href="mailto:admin@fzbilling.tech">admin@fzbilling.tech</a></p>
+            <p>Phone: +1 (555) 123-4567</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 FZBillinG. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

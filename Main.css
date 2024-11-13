@@ -1,0 +1,355 @@
+/* Basic Styling */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    height: 100vh; /* Ensure full screen height */
+    overflow: hidden; /* Prevent body scroll */
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: #007bff;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Container Styling */
+.container {
+    width: 95%;
+    max-width: 500px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll; /* Scrollable for items */
+    max-height: 700px;
+    padding-bottom: 80px; /* Space for the fixed Proceed button */
+}
+
+/* Scrollable Wrapper for Item Cards */
+.items-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+/* Item Card Styling */
+.item-card {
+    width: 48%;  /* Two items per row on mobile screens */
+    max-width: 150px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.item-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.item-card img {
+    width: 100%;
+    max-height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.item-card h3 {
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.item-card p {
+    color: #666;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.item-card .price {
+    font-size: 1rem;
+    color: #007bff;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Proceed to Billing button */
+.btn {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10%;
+    background-color: #0066cc;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    height: 45px;
+    width: 250px;
+}
+
+.btn:hover {
+    background-color: #005bb5;
+}
+
+.item-count {
+    background-color: #dc3545;
+    color: #fff;
+    border-radius: 12px;
+    padding: 3px 8px;
+    margin-left: 5px;
+    font-size: 0.85rem;
+}
+
+/* Fixed Proceed Button Styling */
+.btn-fixed {
+    position: fixed;
+    bottom: 20px; /* Position it at the bottom of the screen */
+    width: 90%;
+    max-width: 450px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #28a745; /* Green for highlighting */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-fixed:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: translateX(-50%) translateY(-2px);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 90%;
+    text-align: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+}
+
+.modal-content h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.modal-content button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Responsive View Adjustments */
+@media (max-width: 768px) {
+    .item-card {
+        width: 48%; /* Two items per row on medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.6rem;
+        margin-top: 10px;
+    }
+
+    .item-card {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .btn-fixed {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    .modal-content h2 {
+        font-size: 1.3rem;
+    }
+}
+.custom-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: center;
+}
+
+.custom-alert button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Category Filter Container */
+.category-filter {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Dropdown Styling */
+.dropdown {
+    position: relative;
+    width: 250px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+/* Selected Item Styling */
+.dropdown-selected {
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dropdown Selected Hover and Active Effects */
+.dropdown-selected:hover {
+    background-color: #eaeaea;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Dropdown Icon for Visual Cue */
+.dropdown-selected::after {
+    content: '▼';
+    font-size: 12px;
+    color: #666;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Rotate arrow when open */
+.dropdown.open .dropdown-selected::after {
+    transform: rotate(-180deg);
+}
+
+/* Dropdown Options Styling */
+.dropdown-options {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 10;
+}
+
+/* Show the dropdown on open */
+.dropdown.open .dropdown-options {
+    display: block;
+}
+
+/* Option Item Styling */
+.dropdown-option {
+    padding: 12px 15px;
+    font-size: 15px;
+    color: #333;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Option Hover Effect */
+.dropdown-option:hover {
+    background-color: #f2f2f2;
+    color: #007acc;
+}
+
+/* Selected Option Styling */
+.dropdown-option.selected {
+    font-weight: bold;
+    color: #007acc;
+}
+.setting-option {
+    text-align: center;
+    margin-top: -60px;
+    margin-left:260px;
+    width: 40px;
+}
+
+.settings-btn {
+    padding: 12px 20px;
+    font-size: 22px;
+    color: none;
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Remove underline */
+}
+
+.settings-btn:hover {
+    background-color: #45a049;
+}
+
+.settings-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}

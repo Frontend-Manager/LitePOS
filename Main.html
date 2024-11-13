@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FZBillinG - Menu</title>
+    <link rel="stylesheet" href="Main.css">
+</head>
+<body>
+    <img src="images/FZBillinG Logo.png" style="width: 200px; margin-left: -170px; float: right;">
+    <div class="setting-option">
+        <a href="setting.html" class="setting-link">
+            <button class="settings-btn">🛠️</button>
+        </a>
+    </div>
+    <div class="container">
+        
+        
+        <div class="category-filter">
+            <label for="categorySelect"></label>
+            <div class="dropdown" id="categoryDropdown" onclick="toggleDropdown()">
+                <div class="dropdown-selected">All</div>
+                <div class="dropdown-options">
+                    <div class="dropdown-option" onclick="filterItemsByCategory('all')">All</div>
+                    <div class="dropdown-option" onclick="filterItemsByCategory('Main Course')">Main Course</div>
+                    <div class="dropdown-option" onclick="filterItemsByCategory('Beverages')">Beverages</div>
+                    <!-- Add more categories as needed -->
+                </div>
+            </div>
+        </div>
+        <!-- This could be placed in your main page (e.g., index.html or wherever you want the setting link) -->
+
+
+        
+        
+        
+
+        <div class="items-section">
+            <!-- Item Cards -->
+            <div class="item-card" onclick="addItemToCart('Pizza', 1219)" data-category="Main Course">
+                <img src="images/Pizza.png" alt="Pizza">
+                <h3>Pizza</h3>
+                <p>Main Course</p>
+                <div class="price">1219 Rs</div>
+            </div>
+            <div class="item-card" onclick="addItemToCart('Burger', 150)" data-category="Main Course">
+                <img src="images/Burger.png" alt="Burger">
+                <h3>Burger</h3>
+                <p>Main Course</p>
+                <div class="price">150 Rs</div>
+            </div>
+            <div class="item-card" onclick="addItemToCart('Fries', 90)" data-category="Main Course">
+                <img src="images/Fries.png" alt="Fries">
+                <h3>Fries</h3>
+                <p>Main Course</p>
+                <div class="price">90 Rs</div>
+            </div>
+            <div class="item-card" onclick="addItemToCart('Chicken Tawa', 190)" data-category="Main Course">
+                <img src="images/Ctawa,png.avif" alt="Fries">
+                <h3>Chicken Tawa</h3>
+                <p>Main Course</p>
+                <div class="price">90 Rs</div>
+            </div>    
+
+            <div class="item-card" onclick="addItemToCart('Bottle', 49)" data-category="Beverages">
+                <img src="images/Water.png" alt="Bottle">
+                <h3>Bottle</h3>
+                <p>Beverages</p>
+                <div class="price">49 Rs</div>
+            </div>
+            <div class="item-card" onclick="addItemToCart('Juice', 119)" data-category="Beverages">
+                <img src="images/Juice.png" alt="Juice">
+                <h3>Juice</h3>
+                <p>Beverages</p>
+                <div class="price">119 Rs</div>
+            </div>
+            <div class="item-card" onclick="addItemToCart('Coke', 119)" data-category="Beverages">
+                <img src="images/Coke.png" alt="Coke">
+                <h3>Coke</h3>
+                <p>Beverages</p>
+                <div class="price">119 Rs</div>
+            </div>
+
+            <div class="item-card" onclick="addItemToCart('Sprite', 89)" data-category="Beverages">
+                <img src="images/Sprite,png.jpg" alt="Coke">
+                <h3>Sprite</h3>
+                <p>Beverages</p>
+                <div class="price">119 Rs</div>
+            </div>
+
+            <div class="item-card" onclick="addItemToCart('Beer', 559)" data-category="Beverages">
+                <img src="images/Beer.png" alt="Coke">
+                <h3>Beer</h3>
+                <p>Beverages</p>
+                <div class="price">119 Rs</div>
+            </div>
+
+            <div class="item-card" onclick="addItemToCart('Chicken Curry', 559)" data-category="Beverages">
+                <img src="images/Ccurry.png" alt="Coke">
+                <h3>Chicken Curry</h3>
+                <p>Beverages</p>
+                <div class="price">400 Rs</div>
+            </div>
+
+            
+            <!-- More items can be added similarly with appropriate data-category attribute -->
+        </div>
+
+        <button class="btn" onclick="proceedToBilling()">Proceed to Billing <span class="item-count">0</span></button>
+    </div>
+
+    <!-- Custom Alert Modal -->
+    <div id="customAlert" class="custom-alert" style="display: none;">
+        <p>Your cart is empty!</p>
+        <button onclick="closeCustomAlert()">OK</button>
+    </div>
+
+    <script src="Main.js"></script>
+</body>
+</html>

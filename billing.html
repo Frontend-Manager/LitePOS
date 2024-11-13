@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing</title>
+    <link rel="stylesheet" href="Billing.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+ <!-- Include jsPDF -->
+</head>
+<body>
+    <img src="images/FZBillinG Logo.png" style="width: 160px;">
+    
+    <div class="bill-section">
+        <h2>Receipt</h2>
+        <table id="billTable">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div class="total-amount" id="totalAmount">Total: 0.00</div>
+        <div class="btn-container">
+            <button class="btn" onclick="openCheckoutModal()">Checkout</button>
+            <button class="btn btn-clear" onclick="clearBill()">Clear Bill</button>
+        </div>
+    </div>
+
+    <!-- Modal for Checkout Confirmation and Customer Details -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <h2>Confirm Checkout</h2>
+            <p>Enter your details to proceed with the bill:</p>
+            <form id="customerForm">
+                <label for="customerName">Name:</label>
+                <input type="text" id="customerName" >
+
+                <label for="customerContact">Contact:</label>
+                <input type="text" id="customerContact" >
+            </form>
+            <button class="btn" onclick="confirmCheckout()">Yes, Proceed</button>
+            <button class="btn btn-cancel" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="success-modal" style="display: none;">
+        <p id="successMessage"></p>
+        <button onclick="closeSuccessModal()">OK</button>
+        <!-- Print Button -->
+        <button onclick="printBill()">Print Bill</button>
+    </div>
+
+    <script src="Billing.js"></script>
+</body>
+</html>

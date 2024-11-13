@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style>
+        /* Full-screen background */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, yellow, white); /* Blue & Purple gradient */
+            background-size: 400% 400%;
+            animation: gradientAnimation 8s ease infinite;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Landing page container */
+        .landing-container {
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+        }
+
+        /* Logo styling */
+        .logo {
+            width: 250px;
+            height: 250px;
+            object-fit: contain;
+            animation: fadeInLogo 1s ease-out forwards;
+        }
+
+        /* Takeaway text hidden initially */
+        .takeaway-text {
+            display: none;
+            width:300px;
+            height: 250px;
+            object-fit: contain;
+            font-size: 45px;
+            font-weight: bold;
+            color: #fff;
+            margin-top: -200px;
+            opacity: 0;
+            animation: fadeInText 1s ease-out forwards;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Fade-in effect for container */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Fade-in effect for the main logo */
+        @keyframes fadeInLogo {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Fade-out effect for the main logo */
+        @keyframes fadeOutLogo {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Fade-in effect for the takeaway text */
+        @keyframes fadeInText {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Animated gradient background */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Mobile responsiveness */
+        @media screen and (max-width: 768px) {
+            .logo { width: 180px; height: 180px; }
+            .takeaway-text { font-size: 35px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-container">
+        <!-- Main logo -->
+        <img src="images/FZBillinG Logo.png" alt="Logo" class="logo" id="logo">
+        <!-- Takeaway logo hidden initially -->
+        <img src="images/Takeway Logo.png" alt="Takeaway Logo" class="takeaway-text" id="takeawayText">
+    </div>
+
+    <script>
+        // After 4 seconds, fade out the main logo and show the takeaway logo
+        setTimeout(function() {
+            document.getElementById("logo").style.animation = "fadeOutLogo 1s forwards";  // Fade out the main logo
+            document.getElementById("takeawayText").style.display = "block"; // Show the Takeaway logo
+            document.getElementById("takeawayText").style.animation = "fadeInText 1s ease-out forwards"; // Fade in Takeaway logo
+        }, 4000); // 4000ms = 4 seconds
+
+        // Redirect after 7 seconds
+        setTimeout(function() {
+            window.location.href = "Login.html"; // Redirect to your main page
+        }, 7000); // 7000ms = 7 seconds (after 3 seconds of "TAKEWAY")
+    </script>
+</body>
+</html>
