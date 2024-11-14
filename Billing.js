@@ -42,7 +42,6 @@ function closeModal() {
     document.getElementById('checkoutModal').style.display = 'none';
 }
 
-// Confirm Checkout and Show Success Modal with Customer Details
 function confirmCheckout() {
     const customerName = document.getElementById('customerName').value;
     const customerContact = document.getElementById('customerContact').value;
@@ -51,13 +50,10 @@ function confirmCheckout() {
         document.getElementById('successMessage').textContent = 
             `Thank you, ${customerName}! Total: ${document.getElementById("totalAmount").textContent}. Contact: ${customerContact}`;
         
-        // Show Success Modal
         document.getElementById('successModal').style.display = 'block';
-        
-        // Clear cart and close the checkout modal
-        localStorage.removeItem('cart');
-        cart = [];
-        updateBill();
+
+        // Clear cart after checkout
+        clearBill(); // Reset cart here after confirmation
         closeModal();
     } else {
         alert("Please fill in your name and contact details.");
@@ -88,20 +84,20 @@ function printBill() {
         return;
     }
 
-    const doc = new jsPDF('p', 'mm', [80, 297]);  // Custom paper size
+    const doc = new jsPDF('p', 'mm', [80, 297]);
 
-    // Set font
+    // Set font and other properties
     doc.setFont("helvetica");
-    doc.setFontSize(8); // Font size adjusted for better fitting
+    doc.setFontSize(8);
 
-    // Drawing line
-    doc.line(5, 28, 57, 28); // Line after the header
-
-    // Retrieve settings from localStorage
     const settings = JSON.parse(localStorage.getItem('settings')) || {};
-
-    if (settings.restaurantName) doc.text(settings.restaurantName, 25, 32); // Restaurant Name
-    if (settings.address) doc.text(settings.address, 25, 37); // Address
+    if (settings.restaurantName) {
+        doc.setFontSize(12);
+        doc.text(settings.restaurantName, 25, 32);
+        doc.setFontSize(8);
+    }
+    
+    if (settings.address) doc.text(settings.address, 15, 37);
 
     const date = new Date();
     const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
@@ -112,35 +108,27 @@ function printBill() {
     doc.text(`Name: ${customerName}`, 5, 50);
     doc.text(`No: ${customerContact}`, 5, 55);
 
-    // Line separator after customer info
     doc.line(5, 60, 58, 60);
-
-    // Table headings
     doc.setFontSize(7);
     doc.text('Item', 5, 65);
     doc.text('Price', 25, 65);
     doc.text('Qty', 40, 65);
     doc.text('Total', 50, 65);
-
-    doc.line(5, 68, 58, 68); // Line below table headings
+    doc.line(5, 68, 58, 68);
 
     let yPosition = 75;
-
     const table = document.querySelector("#billTable");
     const rows = table ? table.rows : [];
-
-    // Loop through the bill table rows
-    const maxRows = 10;  // Set a limit to prevent too many rows from being added
+    const maxRows = 10;
     for (let i = 1; i < rows.length && i <= maxRows; i++) {
         const cols = rows[i].cells;
-        doc.text(cols[0].innerText, 5, yPosition);  // Item
-        doc.text(cols[1].innerText, 25, yPosition); // Price
-        doc.text(cols[2].innerText, 40, yPosition); // Qty
-        doc.text(cols[3].innerText, 50, yPosition); // Total
-        yPosition += 6; // Adjust space between rows
+        doc.text(cols[0].innerText, 5, yPosition);
+        doc.text(cols[1].innerText, 25, yPosition);
+        doc.text(cols[2].innerText, 40, yPosition);
+        doc.text(cols[3].innerText, 50, yPosition);
+        yPosition += 6;
     }
 
-    // Line separator before total
     doc.line(5, yPosition, 58, yPosition);
 
     const totalAmount = document.querySelector("#totalAmount") ? document.querySelector("#totalAmount").innerText.split(":")[1].trim() : "0";
@@ -158,30 +146,22 @@ function printBill() {
         doc.text(`Total with GST: ${totalWithGST}`, 5, yPosition);
     }
 
-    let billCounter = parseInt(localStorage.getItem('billCounter')) || 1;
-    const formattedBillNumber = `bill_${String(billCounter).padStart(2, '0')}_${Date.now()}.pdf`;  // Added timestamp
-
+    // Output the PDF as a blob
     const pdfBlob = doc.output('blob');
+    const pdfURL = URL.createObjectURL(pdfBlob);
 
-    // Create a link and trigger download
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(pdfBlob);
-    link.download = formattedBillNumber;
+    window.open(pdfURL, '_blank');
 
-    // Simulate a click event on the link to trigger download
-    link.dispatchEvent(new MouseEvent('click'));
-
-    // Optionally remove the link after download
-    setTimeout(() => {
-        link.remove();
-    }, 100);
-
-    // Increment the bill counter
+    let billCounter = parseInt(localStorage.getItem('billCounter')) || 1;
     localStorage.setItem('billCounter', billCounter + 1);
 
-    // Optionally, redirect to the main page after printing
-    window.location.href = 'Main.html';
+    // Clear cart after printing
+    clearBill();  // This will reset the cart
+    setTimeout(() => {
+        window.location.href = 'Main.html';
+    }, 1000);
 }
+
 
 
 
